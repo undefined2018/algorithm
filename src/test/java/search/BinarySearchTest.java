@@ -7,9 +7,15 @@ class BinarySearchTest {
 
     @Test
     void binarySearch() {
-
+        int[] q = new int[]{1, 2, 3, 5, 5, 5, 8, 9};
         BinarySearch binarySearch = new BinarySearch();
-        //System.out.println(binarySearch.binarySearch(new int[]{1,2,3}, i -> i > 1));
-
+        // first element that >=5
+        assert binarySearch.binarySearch(q, i -> i < 5, (l, r) -> r) == 3;
+        // last element that <5
+        assert binarySearch.binarySearch(q, i -> i < 5, (l, r) -> l) == 2;
+        // first element that >5
+        assert binarySearch.binarySearch(q, i -> i <= 5, (l, r) -> r) == 6;
+        // last element that <=5
+        assert binarySearch.binarySearch(q, i -> i <= 5, (l, r) -> l) == 5;
     }
 }
